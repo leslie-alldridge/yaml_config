@@ -1,4 +1,3 @@
-# edits the team .yml to remove a user, repo in progress
 from github import Github
 from env import token
 
@@ -30,9 +29,14 @@ def analyze_repos():
     # See if email address exists, and if so, remove it
     if 'leslie.alldridge@gmail.com' in str(yaml_repo.decoded_content):
         print(str(yaml_repo.decoded_content))
-
+        tidy_content(yaml_repo.decoded_content.decode("utf-8"))
     #repo.update_file(contents.path, "more tests", "more tests", contents.sha, branch="test")
     print('Done')
+
+
+def tidy_content(content_as_string):
+    spl = content_as_string.splitlines()
+    print(spl)
 
 
 analyze_repos()
