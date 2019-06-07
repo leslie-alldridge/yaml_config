@@ -11,7 +11,7 @@ python_repos = []
 # add repos tagged with python to an array and print it
 
 
-def analyze_repos():
+def analyze_repos(user):
     print('Checking repositories, please wait a moment...')
     # Get repo
     repo = github.get_repo(
@@ -27,16 +27,21 @@ def analyze_repos():
             print('not team yaml')
     print(yaml_repo)
     # See if email address exists, and if so, remove it
-    if 'leslie.alldridge@gmail.com' in str(yaml_repo.decoded_content):
-        print(str(yaml_repo.decoded_content))
+    if user in str(yaml_repo.decoded_content):
         tidy_content(yaml_repo.decoded_content.decode("utf-8"))
     #repo.update_file(contents.path, "more tests", "more tests", contents.sha, branch="test")
     print('Done')
 
 
 def tidy_content(content_as_string):
-    spl = content_as_string.splitlines()
-    print(spl)
+    tidy = content_as_string.splitlines()
+    for item in tidy:
+        if 'name:' in item:
+            print(type(item))
+            item = 'found ya'
+            print(item)
+    print(tidy)
 
 
-analyze_repos()
+user = 'leslie.alldridge@gmail.com'
+analyze_repos(user)
