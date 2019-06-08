@@ -35,12 +35,16 @@ def analyze_repos(user):
 
 def tidy_content(content_as_string):
     tidy = content_as_string.splitlines()
-    for item in tidy:
-        if 'name:' in item:
-            print(type(item))
-            item = 'found ya'
-            print(item)
-    print(tidy)
+    dictionary = dict()
+    all_dictionaries = []
+    for index, value in [x.split(": ") for x in tidy]:
+        if index in dictionary:
+            all_dictionaries .append(dictionary)
+            dictionary = dict()
+        else:
+            dictionary[index] = value
+    all_dictionaries.append(dictionary)
+    print(all_dictionaries)
 
 
 user = 'leslie.alldridge@gmail.com'
