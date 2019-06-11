@@ -4,13 +4,7 @@ from env import token
 # First create a Github instance:
 github = Github(token)
 
-# Globals
-python_repos = []
-
-# Get all repos and analyze their tags
-# add repos tagged with python to an array and print it
-
-
+# Get repo
 def analyze_repos(user):
     print('Checking repositories, please wait a moment...')
     # Get repo
