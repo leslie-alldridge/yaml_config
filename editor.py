@@ -4,7 +4,13 @@ from env import token
 # First create a Github instance:
 github = Github(token)
 
-# Get repo
+# Globals
+python_repos = []
+
+# Get all repos and analyze their tags
+# add repos tagged with python to an array and print it
+
+
 def analyze_repos(user):
     print('Checking repositories, please wait a moment...')
     # Get repo
@@ -22,7 +28,9 @@ def analyze_repos(user):
     print(yaml_repo)
     # See if email address exists, and if so, remove it
     if user in str(yaml_repo.decoded_content):
-        tidy_content(yaml_repo.decoded_content.decode("utf-8"))
+        user_array = tidy_content(yaml_repo.decoded_content.decode("utf-8"))
+        new_array = remove_user(user_array, user)
+        print(new_array)
     #repo.update_file(contents.path, "more tests", "more tests", contents.sha, branch="test")
     print('Done')
 
@@ -35,7 +43,14 @@ def tidy_content(content_as_string):
         if not output or key in output[-1]:
             output.append({})
         output[-1][key] = value
-    print(output)
+    return output
+
+
+def remove_user(users, email):
+    for user in users:
+        if user['email'] == email:
+            users.remove(user)
+    return users
 
 
 user = 'leslie.alldridge@gmail.com'
