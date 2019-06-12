@@ -25,6 +25,8 @@ def analyze_repos(user):
         # update github with the new changes
         repo.update_file(yaml_repo.path, "Removed user",
                          final_msg, contents.sha, branch="test")
+        repo.create_pull(
+            base='master', head='leslie-alldridge:test', title='test', body='test')
     print('Done')
 
 
