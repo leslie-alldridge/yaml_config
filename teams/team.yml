@@ -27,4 +27,4 @@ members:
   role: user
 - name: leslie6
   email: leslie6@xero.com
-role: user
+  role: user
