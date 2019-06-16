@@ -1,6 +1,3 @@
-- name: leslie1
-  email: leslie1@xero.com
-  role: user
 - name: leslie6
   email: leslie6@xero.com
   role: user
